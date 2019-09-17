@@ -1,0 +1,547 @@
+﻿e TIME COMPLEXITY----NO. OF TIMES A STATEMENT IS EXECUTED.
+                                 ASYMPTOTIC ANALYSIS:
+
+1.BEST CASE(big omega)--> We calculate lower bond on running timee of an algorithm.In this case we consider minimum no. of operation to be executed. 
+For eg- In case of linear search best case occurs when element is found at first place(first index value or zeroth index value) in an array.
+
+2.AVERAGE CASE-->Average case takes all possible inputs and calculate computing time for all inputs.Sum of all calculated values and divided the sum by
+total no. of inputs gives average case. 
+
+3.WORST CASE-->Worst case calculates upper bound on running time of an algorithm.In this case max. no. of operations to be executed is considered.
+For eg- In linear search,worst case occurs when value is either not found or found at last index.
+
+# constant time complexity--O(1).if text is printed for constant value of n.
+# linear time complexity--O(n).depends on user the value of n and times the loop is executed.
+# two continuous loops (nested loops)-n^2 times loop is executed.O(n^2)[quadratic].
+# for(int i=1;i<n;i*=c) {O(log n)}.
+# for(int i=1;i<n;i/=c) {O(log n)}.
+# exponential time complexity: for(int i=1;i<n;i=pow(i,c)) {O(log logn)}.
+# for(int i=1;i<n;i=n*2) {O(n^2)}.
+# for(int i =1;i<n;i=i*2) {O(log 2n)}.
+#for(int i =1;i<n;i++)
+for(int i =1;i<n;i++)
+{
+for(int i=1;i<n;i++)} {O(log n^2)}(take maximum value).
+
+#for(int i=1;i<m;i++)
+for(int i=1;i<n;i++) {O(log max(m,n))}.
+
+                                     TABLE:
+O(1)-- constant complexty
+O(log log n)-- double logarithmic
+O(log n)--logarithmic
+O(sq rt(n))-- root
+o(n)-- linear
+O(n log n) or O(log n!)-- linearitnmic/log linear
+O(n^2)-- quadratic
+O(n^3)--cubic
+O(n^k)--polynomial
+O(2^n)--exponential
+O(n!)--factorial
+
+                        COMPEXITY OF RECURSIVE PROGRAMS-->
+1.Write recursive equation and solve recurrence to find complexity.
+2.Recurrences can be solved wth back substitution,recurrsion tree or master theorem.For eg-- binary search,merge sort are solved with recurrsion.
+#Recurrence condition for factorial of a no.-->T(n)=T(n-1)+1
+#Recurrence condition for merge sort-->T(n)=2T(n/2)+n
+#Recurrence condition for binary search-->T(n)=T(n/2)+1
+
+                             SPACE COMPLEXITY-->
+
+int sum(int a[],int n//4)
+{
+int c=0;//4
+for(int i=0//4;i<n;i++)
+{
+c=c+a[i];
+}
+return (c);//4
+}
+total bites occupied--> 4n+16
+
+                                      STACKS:-
+cannot return variable value to the function by REFERENCE.
+DANGLING POINTER:-after execution of function,the local variable which was pointing to 
+some value is no longer left so its memory destroys.
+stack was temporary storage area but heap is a permanent storage area.
+MALLOCK and CALLOCK:-
+int *p=(int *)malloc(sizeof(int)//heap
+always release memory after execution of the whole code.
+
+In this case we cannot return loacal variable b reference.
+heap area point p is pointer in peak segment which is permanent.In this case fuctions 
+return a point to location which is located in a heap segment and will not be destroyed 
+after function termination.
+
+                          PARAMETER PASSING TECHNIQUE TO A FUNCTION:-
+void modify(int b)
+{
+b=b+10;
+printf("%d",b);//40
+}
+int main()
+{
+int a=30;
+printf("%d",a);//30
+modify(a);
+printf("%d",a);//30
+
+Q1. Write a function named as prime factor that accepts an integer n where n>=2
+and print all prime factors of n. //24=2,2,2,3
+Q2. Write a function GCD that accepts two positive non zero integers i &j where 
+i>=1 &j<=100000 and returns GCD of the numbers.//300,18=6
+Q3.Write a function binarytodecimal that recieves an integer n and convert it 
+to its equivalent decimal value and return that value to main function.
+
+                             MEMORY LAYOUT OF A C PROGRAM:-
+CODE SEGMENT
+DATA SEGEMENT
+         NOTE-  Machine instructions are placed in code segment
+                              TABLE(DATA SEGMENT):-
+1.command line argument
+2.stack
+3.heap
+4.uninitialized data segment
+5.initialized data segment
+6.program text/code segment
+
+
+                               PROGRAM TEXT:-
+Every program written in C language must be converted to machine language 
+by the compiler .Before execution,instruction must be placed in memory.The part
+of memory where the instructions of program are written is called code segment.
+This segment is read only and any change to this segment leads to program crash.
+Also this is sharable segment so that single copy needs to be in memory for 
+frequently executed programs such as c compiler,text editor.
+
+                         INITIALISED DATA SEGMENT:-
+1.It contains global,extern,static and constant variables that are initialised
+2.This is not read only segment as data can be changed at any time.
+Eg(uninitialised):-
+char *str="welcome"
+int a=10;
+int main()
+{
+static int b=40;
+}
+                       UNINITIALISED DATA SEGMENT
+Also called Block started BY symbol(BSS)
+Uninitialised data segment contains all global and static variables that are initialised to zero
+or do not have initialisation in source data.Data is initaialised by kernel to arithmetic zero or 
+NULL before execution.For eg:-
+char *str;
+int a;
+int main()
+{
+static int b;
+}
+                                HEAP(Permanent storage):-
+Heap is used for dynamic memory allocation by using malloc(),calloc(),realloc(),free().
+Data in heap remains present till free command is not issued for that particular location.
+Heap area is sharable by all shared libraries.
+For eg:-
+int main()
+{
+int *p=(int *)malloc(size of int);
+free(p);
+}
+                                   STACK:-
+Temporary storage.Stores local variable.Eg.:- during function calling,recurion.
+Stack is used for LOCAL VARIABLE and function calls.It is also called last in first out data 
+structure.System manage stack internally.
+Stack pointer points to top of the stack.Stack will change when elements are either pushed or popped.
+
+extern int n=40; //initialized data segment
+int a=10; //initialized
+char b; //bss
+char c='A'; //initialized
+int main()
+{
+static int d; //bss
+static int e=90; //initialised
+const float h=30.45; //initialised
+int *ptr=(int *) malloc(size of int); //heap
+int g; //stack
+}
+
+
+void read(int a[10],int n)
+       or
+void read(int *a,int n)
+
+
+             Passing an array to function:--
+1.Individual element                      2.Entire array
+
+1.By data value
+2.By address
+int main()
+{
+int a[5]={10,20,30,40,50};
+display(a[2]);//display(&a[2])
+}
+void display(int num)
+{
+printf("%d",num)
+}
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+Void pointer-
+That has no data type and can hold address of any type  or can be typecasted to any type.
+Int a=10;
+Char c=’A’;
+Float b=2.34;
+Void *ptr;
+Ptr=&a;
+Ptr=&b;
+Ptr=&c;
+-------------Printf(“%c”,*ptr);           ------ ERROR--------
+Printf(“%c”,*(char*)ptr);----------correct---
+Printf(“%d”,*(int*)ptr);---------correct---
+ ** int a[2]={1,2};
+  void *p=a;//or we can write *p=&a; 
+p=p+4;
+  printf("%d\n",*(int*)p);**
+**char *S;
+  S=”ABCD”;
+  S=S+2;
+  printf("%c",*(S-2));**//output-A
+Dynamic memory allocation
+Static memory allocation-
+Decision of  how much memory will be allocated during the program execution is done at compile time.
+Allocated memory is  fixed and cannot be increased  or decreased, eg- declaration statements (all are example of static memory allocation )
+int a[10];------stores 10 elements of integer type but if we want to store only 5 elements then rest of memory is wasted.
+Cannot reuse unused memory .
+int a;
+float *b;
+char c;
+DYNAMIC MEMORY ALLOCATION
+The process of allocating memory to variables during execution of programs or at runtime is known as dynamic memory allocation. 
+The decision of allocation is done at runtime.
+.The need of dynamic memory arises in following situations-
+    1. When we need lot of memory 
+    2. Memory must live after function returns
+    3. Dynamic allocation allows code to request memory at any time and only when needed.
+There are 4 function used to implement  dynamic memory allocation.
+    1. Malloc() -memory allocation        - allocates single block  of memory in heap area of specified size and return a pointer of type void which can be casted to pointer of any form and returns NULL if memory is not available. The syntax of malloc function is – ptr=(casttype*)malloc(sizeinbytes);
+Eg-  int *p=(int *)malloc(5*sizeof(int));   --- 20 bytes of memory block is dynamically allocated to p. address of first byte of memory allocated is  assigned to pointer of type integer.
+    2.  Calloc()—contiguous allocation- this function is  used to request multiple blocks of storage each of same size and then sets all bytes to zero.the syntax of this function is –
+        ptr=(casttype *)calloc(n,sizeof(element));
+              eg- int *p=(int *)calloc(5,sieof(int)); returns null if memory cannot be allocated.  Size of p =16bytes.
+Pointer to n bytes of uninitialized storage and null if request cannot be satisfied. 
+--- write a program to read and display array elements---
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+int n,i;
+scanf("%d",&n);
+int *a;
+a=(int*)calloc(n,sizeof(int));
+if (a==0)
+    printf("memory  not available");
+else {
+for(i=0;i<n;i++){
+    scanf("%d",a+i);
+}}
+
+for(i=0;i<n;i++){
+    printf("%d\n",*(a+i));
+}
+free(a);
+return 0;
+}
+-------------------------------------------------------------------------------------------------------------------------
+int *p=(int *)calloc(5,sizeof(int));
+printf("%d",*p);----------ans- 0
+if malloc then --------garbage value;
+NOTE- free memory area is called heap. Size of heap is not constant and keeps on changing when program is executed .
+30july-------
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+int size=7;
+char *ptr=(char*)malloc(size*sizeof(char));
+if (ptr==NULL){
+printf("memory is not available");
+}
+*(ptr+0)='c';
+*(ptr+1)='o';
+*(ptr+2)='d';
+*(ptr+3)='i';
+*(ptr+4)='n';
+*(ptr+5)='g';
+*(ptr+6)='\0';      // or instead os using these 6 lines we can use (ptr="coding";)
+int i;
+for(i=0;i<7;i++){
+printf("%c",*(ptr+i));
+}
+free(ptr);
+
+ptr ="coding";
+printf("\n%s",ptr);
+return 0;}
+size of dynamically created  memory can be changed using realloc function . the syntax of realloc function is -     void*realloc(void*p,size);
+realloc function returns void pointer if successful otherwise NULL pointer if fails.
+void*p-=-------pointer to  previous allocated memory 
+size=--------- size is newly  requested size.
+realloc ---- returns pointer to  first byte of memory  block.
+            - allocated new block may be or  may  not be at same region. this function returns same pointer if able to make  old block of memory bigger otherwise has to go elsewhere to get contigeous memory and after copying old data there then returns pointer to new memory.
+ptr=realloc(ptr,newsize);
+example------------------------------------------------------
+
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+int *p=(int*)malloc(2*sizeof(int));
+*p=10;
+*(p+1)=20;
+int i;
+for(i=0;i<2;i++){
+printf("%d\t",*(p+i));
+}printf("\n");
+p=(int*)realloc(p,sizeof(int)*4);
+*(p+2)=30;
+*(p+3)=40;
+for(i=0;i<4;i++){
+printf("%d\t",*(p+i));
+}
+free(p);
+return 0;}
+in this example  realloc will create new spacein memory for required number of elements and then copy all the old elements in this newspace  
+---------------------------------------------
+int *p;
+p=(int*)malloc(5*sizeof(int));
+int *q;
+q=(int*)realloc(p,10);
+-------------------
+free() function is  used to release memory space when not required . the syntax of free function is free(p); .memory is deallocated and returned back to free list within heap.
+31july---------
+memory leak occurs when memory is allocated but not releassed when it is no longer required. this causes an application to unnecessary consume memory, thereby reducing the memory available for other application .  it is not big concern in small programs butwhen dealing with large projects memory leakage may result in slowing down the applicationn or crashing the application when computer memory resourse limits are reached. for example - if function dynamically alocate memory for 100 double data type values and forgets to free that memory and in worst case if that functionn is  called several times within the code 
+-----------------------------------------------
+29 august:-
+2D aRRAY:-
+Row major order representation in memory of the coputer 1st 0 row elements than 2nd 1 row elements ….
+A[0][0]	A[0][1]	A[0][2]	A[1][0]			
+
+		
+		
+		
+2d array is the collection of 1d array or Array of 1 dimensional array.
+
+Scanf(“%d”,a[i][j]);
+
+NOTE:-
+Int a[][] not valid
+Int a[2][] not valid
+Int a[][2]  valid             column size Dena zarroi hai
+
+Int a[2][2]={0} all elements of array are zero.
+Compile time jab hum code me he values de ga
+Execute time  jab hum user de ga
+
+POINTERS &2D ARRAY:-
+
+
+Address ------  (*(a+i)+j) this means points to base address of jth element of ith 1d array.
+Value  -----   ((a+i)+j)   to excess value of jth element of ith 1d array.
+
+Operation on 2d array:-
+For addition and subtraction for 2 matrix number of rows and columns should be same.
+For multiplication number of column in first matrix should be equal to number of rows in 2nd matrix.
+2000    2004    2008    2012    2016     2020    2024    2028     2032
+1	2	3	4	5	6	7	8	9
+
+                 A[2][1]==8
+                      *(A[2]+1)==8
+                                  ((A+2)+1)==8
+                                   A[1]+0==2012
+                                   (A[2]+2)==2032
+                             A[1]==2012  (1st row ka base address print hoga)
+Int *p[5];
+Array of pointers                                      
+Address
+Of int. value	3000	4000	5000	7000
+p[0]                  p[1]                  p[2]            p[3]                p[4]
+8000                8008              8016
+p[0]=&a,p[1]=&b and so on .
+if we have to print address of p pointer.
+Printf(“%ld”,(logint)p[i]);
+
+Int (*p)[5]
+Pointer to an array 
+10	20	30	40	50
+2000               2004              2008         2012                  2016
+P++ means 20 bytes ka difference hoga,
+Int a[] ={10,20,30,40,50}
+P=&a;
+Printf(“%d”,p);
+P++;
+Printf(“%d”,p);
+Ques1:-to display an array  using pointer.
+
+30/august:-
+Int *p;
+Int (*ptr)[5];
+Int a[5]={10,20,30,40,50};
+P=a;
+Ptr=&a;
+10	20	30	40	50
+Printf(“%d %d”,p,ptr);( Both p and ptr will point to address)
+P++;
+Ptr;                             2000,2004…                    
+Printf(“%d %d”,p,ptr);(p will point to next base address and ptr will increase its bits depending on machine )
+
+
+Int *p;
+Int (*ptr)[5];
+Int a={1,2,3,4,5};
+P=a;
+Ptr=&a;
+Printf(“%d %d”,p,ptr);{base addressof both pointers will be printed}
+Printf(“%d %d”,sizeof(p),sizeof(*p));{8,4}
+Printf(“%d %d”,*p,*ptr);{*p will print value of a[0],and *ptr will print address if we want to print the value use **ptr}
+Printf(“%d %d “,sizeof(ptr){8},sizeof(*ptr){=size of array 20});
+
+Int s[4][2]={1,2,3,4,5,6,7,8};
+Int (*ptr)[2]=&s;                         [//int (*ptr)[2];]
+Int I,j,*pint;
+For(i=0;i<=3;i++)
+{
+Pint=(ptr+i);           [//ptr=&s[i]]                
+Printf(“\n”);            [//pint=(int *)ptr;
+For (j=0;j<=i;j++)
+{
+Printf(“%d”,*(pint+j));n
+}
+} 
+Ques1:-Write a program to find kth smallest element in an array.
+------------------------------------------------------------------------
+2august:-
+
+2d array using dynamic memory allocation:-
+				
+				
+				
+				
+				
+1000
+2000
+3000
+4000
+5000
+
+7000
+
+ 
+
+
+Pointer to 
+Pointer.(**a)
+
+Steps to create 2d array using dynamic memory:-
+1.	Create pointer to pointer and allocate memory for the row using malloc.
+2.	Allocate memory for each row columns using malloc. 
+
+Note:-every location in each row is contagious memory but not necessary that every row at contagious memory in a heap .
+--------------------------------------------------------------------------------------------------------------------------------
+4th aug-
+-----
+Passing 2d array to function:-
+1st method to pass to d array:-
+Int main()
+{
+Int a[3][4]={1,2,3,4,5,6,7,8,9,0,1,6};
+Display(a,3,4);
+}
+Void display(int a[3][4]  //int a[][4]
+, int r, int c)
+{
+For(int 1=0;i<r;i++)
+{
+For (int j=0;j<c;j++)
+Printf(“%d”,a[i][j]);
+}
+}
+1	2	3	4	5	6	7	8	9	0	1	6
+2000,  2004,  2008,    2012,
+---------------
+2nd method:-
+To write columns is zarroi..  to write is optional.      
+Int main()
+{
+Int a[3][4]={1,2,3,4,5,6,7,8,9,0,1,6};
+Display(a,3,4);
+}
+Void display(int a[][4], int r, int c)
+{
+For(int i=0;i<r;i++)
+{
+For (int j=0;j<c;j++)
+Printf(“%d”,a[i][j]);
+}
+}
+
+3rd method:-
+Int main()
+{
+Int a[3][4]={1,2,3,4,5,6,7,8,9,0,1,6};
+Display(a,3,4);
+}
+Void display(int *q , int r , int c)
+{
+For (int i=0;i<r;i++)
+{
+For (int j=0;j<c;j++)
+Printf(“%d”,*(q+i*c+j);
+
+1	2	3	4
+ 5	6	7	8
+9	0	1	6
+}                         q+0                       
+}                         q+1
+                          q+2
+4th method:-
+Int main()
+{
+Int a[3][4]={1,2,3,4,5,6,7,8,9,0,1,6};
+Display(a,3,4);    //display((int *)a,3,4);
+}
+Void display(int (*q)[4] , int r , int c)
+{
+Int p*;
+For (int i=0;i<r;i++)
+{
+P=q+i;
+For (int j=0;j<c;j++)
+{
+Printf(“%d”,*(p+j));
+}
+}
+5th method:-
+Int main()
+{
+Int a[3][4]={1,2,3,4,5,6,7,8,9,0,1,6};
+Display(a,3,4);    //display((int *)a,3,4);
+}
+Void display(int **q(int *q[]) , int r , int c)
+{
+For (int i=0;i<r;i++)
+{
+For (int j=0;j<c;j++)
+Printf(“%d”,*(q+i*c+j));
+}
+}														
+
+
+
+
+
+
+
+
+
