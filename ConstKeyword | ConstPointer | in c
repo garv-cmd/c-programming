@@ -1,0 +1,20 @@
+/*
+NOTES:-
+1.const int *p;   --> p is a pointer to integer constant
+2.int const *p;   --> p is a pointer to constant integer
+SO, We can perform increment or decrement operattions: p++; or p--;
+but we cannot operate (*p)++; or (*p)--; because teh value to p which it is pointing is constant;
+3.int *const r;   --> r is const pointer to integer
+q++; Cannot operate NO
+(*q)++; YES
+4.const int *const r;   -->r is const pointer to integer const
+r++; NO
+(*r)++; NO
+
+
+
+
+
+
+
+*/
